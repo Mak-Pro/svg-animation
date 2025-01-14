@@ -1,0 +1,71 @@
+/* Container for text descriptions */
+.text-descriptions-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Base styles for text descriptions */
+.text-description {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.7) ;
+  font-size: 0.875rem ;
+  opacity: 1 ;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Adjusted positions accounting for SVG transforms */
+.armature-c-text {
+  left: 236px;
+  top: 212px;
+}
+
+.uncovered-leg-d-text {
+  left: 235px;
+  top: 146px;
+}
+
+.electro-magnet-b-text {
+  left: 253px;
+  top: 190px;
+}
+
+.stretched-membrane-a-text {
+  left: 210px;
+  top: 210px;
+}
+
+.sound-cone-a-text {
+  left: 150px;
+  top: 185px;
+}
+
+.circuit-ebefg-text {
+  left: 374px;
+  top: 160px;
+}
+
+.electro-magnet-f-text {
+  left: 585px;
+  top: 185px;
+}
+
+.second-armature-leg-group-text {
+  left: 620px;
+  top: 218px;
+}
+
+.second-sound-cone-group-text {
+  left: 595px;
+  top: 205px;
+}
+
+/* Temporarily disable all animations for debugging */

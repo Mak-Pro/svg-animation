@@ -1,0 +1,426 @@
+/* Add these CSS custom properties at the top of the file */
+:root {
+  --animation-play-state: running;
+  --animation-duration-multiplier: 1;
+  --animation-delay-multiplier: 1;
+}
+
+/* Base fade in for all SVG components */
+
+.armature-c {
+  opacity: 0;
+  animation: fadeIn 2s ease-out 1s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(1s * var(--animation-delay-multiplier));
+}
+
+.uncovered-leg-d {
+  opacity: 0;
+  animation: fadeIn 2s ease-out 3s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(3s * var(--animation-delay-multiplier));
+}
+
+.electro-magnet-b {
+  opacity: 0;
+  animation: fadeIn 2s ease-out 5s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(5s * var(--animation-delay-multiplier));
+}
+
+.stretched-membrane-a {
+  opacity: 0;
+  animation: fadeIn 3s ease-out 7s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(3s * var(--animation-duration-multiplier));
+  animation-delay: calc(7s * var(--animation-delay-multiplier));
+}
+
+.sound-cone-a {
+  opacity: 0;
+  animation: fadeIn 3s ease-out 10s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(3s * var(--animation-duration-multiplier));
+  animation-delay: calc(10s * var(--animation-delay-multiplier));
+}
+
+.circuit-ebefg {
+  opacity: 0;
+  animation: fadeIn 5s ease-out 13s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(5s * var(--animation-duration-multiplier));
+  animation-delay: calc(13s * var(--animation-delay-multiplier));
+}
+
+.electro-magnet-f {
+  opacity: 0;
+  animation: fadeIn 2s ease-out 18s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(18s * var(--animation-delay-multiplier));
+}
+
+.second-armature-leg-group {
+  opacity: 0;
+  animation: fadeIn 3s ease-out 20s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(3s * var(--animation-duration-multiplier));
+  animation-delay: calc(20s * var(--animation-delay-multiplier));
+}
+
+.second-sound-cone-group {
+  opacity: 0;
+  animation: fadeIn 2s ease-out 23s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(23s * var(--animation-delay-multiplier));
+}
+
+/* Arc animation - adjusted to appear after circuit explanation */
+.arc-between-electro-magnets {
+  opacity: 0;
+  animation: fadeInAndDraw 3s ease-out 12.2s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(3s * var(--animation-duration-multiplier));
+  animation-delay: calc(12.2s * var(--animation-delay-multiplier));
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInAndDraw {
+  0% {
+    opacity: 0;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInThenSnap {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 100px); /* Adjust this value to position below SVG */
+  }
+}
+
+/* Just keep a subtle opacity change on the wrapper */
+.svg-animation-wrapper {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.svg-animation-wrapper:hover {
+  opacity: 0.8;
+}
+
+.transform-path {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.electron {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg) rotateX(20deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(20deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+.armature-c-text {
+  opacity: 0;
+  animation: fadeInThenSnapArmatureC 2s ease-out 1s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(1s * var(--animation-delay-multiplier));
+}
+
+.uncovered-leg-d-text {
+  opacity: 0;
+  animation: fadeInThenSnapUncoveredLegD 2s ease-out 3s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(3s * var(--animation-delay-multiplier));
+}
+
+.electro-magnet-b-text {
+  opacity: 0;
+  animation: fadeInThenSnapElectroMagnetB 2s ease-out 5s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(5s * var(--animation-delay-multiplier));
+}
+
+.stretched-membrane-a-text {
+  opacity: 0;
+  animation: fadeInThenSnapStretchedMembraneA 2s ease-out 7s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(3s * var(--animation-duration-multiplier));
+  animation-delay: calc(7s * var(--animation-delay-multiplier));
+}
+
+.sound-cone-a-text {
+  opacity: 0;
+  animation: fadeInThenSnapSoundConeA 3s ease-out 9s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(3s * var(--animation-duration-multiplier));
+  animation-delay: calc(9s * var(--animation-delay-multiplier));
+}
+
+.circuit-ebefg-text {
+  opacity: 0;
+  animation: fadeInThenSnapCircuitEbefg 5s ease-out 12s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(5s * var(--animation-duration-multiplier));
+  animation-delay: calc(12s * var(--animation-delay-multiplier));
+}
+
+.electro-magnet-f-text {
+  opacity: 0;
+  animation: fadeInThenSnapElectroMagnetF 2s ease-out 18s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(18s * var(--animation-delay-multiplier));
+}
+
+.second-armature-leg-group-text {
+  opacity: 0;
+  animation: fadeInThenSnapSecondArmatureLegGroup 3s ease-out 20s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(3s * var(--animation-duration-multiplier));
+  animation-delay: calc(20s * var(--animation-delay-multiplier));
+}
+
+.second-sound-cone-group-text {
+  opacity: 0;
+  animation: fadeInThenSnapSecondSoundConeGroup 2s ease-out 23s forwards;
+  animation-play-state: var(--animation-play-state);
+  animation-duration: calc(2s * var(--animation-duration-multiplier));
+  animation-delay: calc(23s * var(--animation-delay-multiplier));
+}
+
+@keyframes fadeInThenSnapArmatureC {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  65% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-100px, 200px); /* Adjusted distance for this specific text */
+  }
+}
+
+@keyframes fadeInThenSnapUncoveredLegD {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-157px, 250px); /* Adjusted distance for this specific text */
+  }
+} 
+
+@keyframes fadeInThenSnapElectroMagnetB {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0);
+  } 
+  65% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-148px, 270px);
+  }
+}
+
+@keyframes fadeInThenSnapStretchedMembraneA {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0);
+  } 
+  65% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-88px, 260px);
+  } 
+}
+
+@keyframes fadeInThenSnapSoundConeA {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  65% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(41px, 220px);
+  }
+}
+
+@keyframes fadeInThenSnapCircuitEbefg {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0);
+  } 
+  65% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-77px, 190px);
+  }
+}
+
+@keyframes fadeInThenSnapElectroMagnetF {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  65% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-210px, 380px);
+  }
+}
+
+@keyframes fadeInThenSnapSecondArmatureLegGroup {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  65% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-158px, 380px);
+  }
+}
+
+@keyframes fadeInThenSnapSecondSoundConeGroup {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  65% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-160px, 370px);
+  }
+}
+
+/* Add a class that will be used to speed up animations */
+.speed-up-animations {
+  --animation-duration-multiplier: 0;
+  --animation-delay-multiplier: 0;
+}
