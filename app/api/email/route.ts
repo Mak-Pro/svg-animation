@@ -1,25 +1,34 @@
-import { NextResponse } from 'next/server'
-import sgMail from '@sendgrid/mail'
+import { NextResponse } from "next/server";
+import sgMail from "@sendgrid/mail";
 
-if (!process.env.SENDGRID_API_KEY) {
-  throw new Error('SENDGRID_API_KEY is not set in environment variables')
+// if (!process.env.SENDGRID_API_KEY) {
+//   throw new Error("SENDGRID_API_KEY is not set in environment variables");
+// }
+sgMail.setApiKey("SG.777");
+
+const VERIFIED_SENDER = "josh@trycareful.ai";
+
+interface EmailRequestBody {
+  to: string;
+  from: string;
+  subject: string;
+  patentNumber: string;
+  claimNumber: string;
 }
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-const VERIFIED_SENDER = 'josh@trycareful.ai' // Replace with your verified sender
-
-export async function POST(request: Request) {
+export async function POST(request: Request): Promise<Response> {
   try {
-    const body = await request.json()
-    const { to, from, subject, patentNumber, claimNumber } = body
+    const body: EmailRequestBody = await request.json();
+
+    const { to, from, subject, patentNumber, claimNumber } = body;
 
     const msg = {
       to,
       from: {
-        email: VERIFIED_SENDER, // Must be your verified sender
-        name: 'Careful AI'
+        email: VERIFIED_SENDER,
+        name: "Careful AI",
       },
-      replyTo: from, // User's email goes here
+      replyTo: from,
       subject,
       text: `New patent analysis request:\nPatent: ${patentNumber}\nClaim: ${claimNumber}\nFrom: ${from}`,
       html: `
@@ -28,19 +37,26 @@ export async function POST(request: Request) {
         <p><strong>Claim Number:</strong> ${claimNumber}</p>
         <p><strong>From:</strong> ${from}</p>
       `,
+    };
+
+    await sgMail.send(msg);
+    return NextResponse.json({ success: true });
+  } catch (error: unknown) {
+    console.error("Email sending error:", error);
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "response" in error &&
+      typeof error.response === "object" &&
+      error.response !== null &&
+      "body" in error.response
+    ) {
+      console.error((error.response as { body: unknown }).body);
     }
 
-    await sgMail.send(msg)
-    return NextResponse.json({ success: true })
-  } catch (error) {
-    console.error('Email sending error:', error)
-    // Log the full error details for debugging
-    if (error.response) {
-      console.error(error.response.body)
-    }
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { error: "Failed to send email" },
       { status: 500 }
-    )
+    );
   }
 }
